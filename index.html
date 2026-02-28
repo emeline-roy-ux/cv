@@ -373,12 +373,11 @@
         });
 
       mappedPublications.forEach(pub => nodes.push(pub));
-      publicationsNode.summary = `${mappedPublications.length} publication(s) synchronisée(s) depuis HAL.`;
     }
 
     function formatHalAuthors(authors) {
       if (!Array.isArray(authors) || !authors.length) return "";
-      return `Emeline Roy et ses co-auteurs (${authors.join(", ")})`;
+      return authors.join(", ");
     }
 
     function classifyHalType(docType, halId) {
