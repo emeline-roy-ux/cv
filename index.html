@@ -120,8 +120,8 @@
     #hero-viz {
       position: absolute;
       top: 0;
-      right: 0;
-      width: min(56vw, 680px);
+      right: clamp(0.5rem, 4vw, 3rem);
+      width: min(52vw, 620px);
       height: 100%;
       transition: top 220ms ease, right 220ms ease, width 220ms ease, height 220ms ease, border-color 220ms ease, background-color 220ms ease;
     }
@@ -148,7 +148,7 @@
       max-width: 1100px;
       margin: 0 auto;
       height: 100%;
-      padding: 1.2rem 1rem;
+      padding: 1.2rem clamp(300px, 48vw, 640px) 1.2rem 1rem;
       display: flex;
       flex-direction: column;
       justify-content: flex-end;
@@ -298,6 +298,9 @@
       .menu { justify-content: flex-start; gap: 0.3rem 0.75rem; }
       :root { --header-h: 96px; }
       main { padding-top: 1rem; }
+      .hero-copy {
+        padding: 1.2rem 1rem;
+      }
       #hero-viz.hero-viz-following {
         position: absolute;
         inset: 0;
