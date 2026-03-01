@@ -120,6 +120,23 @@
     #hero-viz {
       position: absolute;
       inset: 0;
+      transition: top 220ms ease, right 220ms ease, width 220ms ease, height 220ms ease, border-color 220ms ease, background-color 220ms ease;
+    }
+
+    #hero-viz.hero-viz-following {
+      position: fixed;
+      inset: auto 0 0 auto;
+      top: calc(var(--header-h) + 12px);
+      right: 12px;
+      width: min(40vw, 460px);
+      height: min(44vh, 340px);
+      z-index: 25;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: rgba(7, 9, 15, 0.48);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      box-shadow: 0 16px 34px rgba(0, 0, 0, 0.3);
     }
 
     .hero-copy {
@@ -168,6 +185,14 @@
     }
     .tooltip.visible { opacity: 1; transform: translateY(0); }
     .tooltip strong { font-family: var(--font-heading); display: block; margin-bottom: 0.2rem; }
+
+    .node-static-label {
+      fill: rgba(246, 249, 255, 0.92);
+      font-size: 11px;
+      font-family: var(--font-body);
+      letter-spacing: 0.02em;
+      pointer-events: none;
+    }
 
     main {
       max-width: 1100px;
@@ -244,6 +269,16 @@
       .menu { justify-content: flex-start; gap: 0.3rem 0.75rem; }
       :root { --header-h: 96px; }
       main { padding-top: 1rem; }
+      #hero-viz.hero-viz-following {
+        position: absolute;
+        inset: 0;
+        width: auto;
+        height: auto;
+        border: none;
+        border-radius: 0;
+        background: transparent;
+        box-shadow: none;
+      }
     }
   </style>
 </head>
@@ -698,6 +733,11 @@
         .attr("stroke", "rgba(229, 238, 255, 0.8)")
         .attr("stroke-width", 1.35);
 
+      nodeEl.append("text")
+        .attr("class", "node-static-label")
+        .attr("x", 28)
+        .attr("y", 4)
+        .text(d => d.label || d.id.replaceAll("_", " "));
 
       simulation.on("tick", () => {
         linksEl
@@ -772,13 +812,28 @@
 
       svg.call(zoom);
 
-      window.addEventListener("resize", () => {
+      function resizeSimulation() {
         const w = heroEl.clientWidth;
         const h = heroEl.clientHeight;
         svg.attr("width", w).attr("height", h).attr("viewBox", `0 0 ${w} ${h}`);
         simulation.force("center", d3.forceCenter(w / 2, h / 2).strength(0.06));
         simulation.alpha(0.24).restart();
+      }
+
+      function updateFollowState() {
+        const shouldFollow = window.innerWidth > 840 && window.scrollY > Math.max(heroEl.offsetHeight - 100, 140);
+        const isFollowing = heroEl.classList.contains("hero-viz-following");
+        if (shouldFollow === isFollowing) return;
+        heroEl.classList.toggle("hero-viz-following", shouldFollow);
+        resizeSimulation();
+      }
+
+      window.addEventListener("resize", () => {
+        updateFollowState();
+        resizeSimulation();
       });
+      window.addEventListener("scroll", updateFollowState, { passive: true });
+      updateFollowState();
     }
 
     async function init() {
