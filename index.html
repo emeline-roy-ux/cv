@@ -758,9 +758,7 @@
         currentX: 12,
         currentY: Number.parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--header-h")) + 12,
         targetX: 12,
-        targetY: Number.parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--header-h")) + 12,
-        pointerInsideViz: false,
-        isDraggingNode: false
+        targetY: Number.parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--header-h")) + 12
       };
 
       const zoomLayer = svg.append("g");
@@ -891,15 +889,9 @@
         const isFollowing = heroEl.classList.contains("hero-viz-following");
         if (!isFollowing) return;
 
-        if (followState.pointerInsideViz || followState.isDraggingNode) {
-          followState.targetX = followState.currentX;
-          followState.targetY = followState.currentY;
-          return;
-        }
-
         const margin = 12;
-        const offsetX = 60;
-        const offsetY = 36;
+        const offsetX = 24;
+        const offsetY = 20;
         const rect = heroEl.getBoundingClientRect();
         const halfWidth = rect.width / 2;
         const halfHeight = rect.height / 2;
@@ -936,23 +928,11 @@
         followState.rafId = requestAnimationFrame(runFollowAnimation);
       }
 
-      heroEl.addEventListener("pointerenter", () => {
-        followState.pointerInsideViz = true;
-      });
-
-      heroEl.addEventListener("pointerleave", () => {
-        followState.pointerInsideViz = false;
-        updateFollowTarget();
-      });
-
-      function handlePointerTracking(event) {
+      window.addEventListener("pointermove", (event) => {
         followState.pointerX = event.clientX;
         followState.pointerY = event.clientY;
         updateFollowTarget();
-      }
-
-      window.addEventListener("pointermove", handlePointerTracking, { passive: true });
-      window.addEventListener("mousemove", handlePointerTracking, { passive: true });
+      }, { passive: true });
 
       function updateFollowState() {
         const shouldFollow = window.innerWidth > 840 && window.scrollY > Math.max(heroEl.offsetHeight - 100, 140);
