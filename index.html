@@ -758,7 +758,9 @@
         currentX: 12,
         currentY: Number.parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--header-h")) + 12,
         targetX: 12,
-        targetY: Number.parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--header-h")) + 12
+        targetY: Number.parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--header-h")) + 12,
+        pointerInsideViz: false,
+        isDraggingNode: false
       };
 
       const zoomLayer = svg.append("g");
@@ -889,9 +891,15 @@
         const isFollowing = heroEl.classList.contains("hero-viz-following");
         if (!isFollowing) return;
 
+        if (followState.pointerInsideViz || followState.isDraggingNode) {
+          followState.targetX = followState.currentX;
+          followState.targetY = followState.currentY;
+          return;
+        }
+
         const margin = 12;
-        const offsetX = 24;
-        const offsetY = 20;
+        const offsetX = 26;
+        const offsetY = 18;
         const rect = heroEl.getBoundingClientRect();
         const halfWidth = rect.width / 2;
         const halfHeight = rect.height / 2;
@@ -928,11 +936,32 @@
         followState.rafId = requestAnimationFrame(runFollowAnimation);
       }
 
-      window.addEventListener("pointermove", (event) => {
+      function syncPointerProximity(pointerX, pointerY) {
+        const rect = heroEl.getBoundingClientRect();
+        const capturePadding = 28;
+        const withinX = pointerX >= rect.left - capturePadding && pointerX <= rect.right + capturePadding;
+        const withinY = pointerY >= rect.top - capturePadding && pointerY <= rect.bottom + capturePadding;
+        followState.pointerInsideViz = withinX && withinY;
+      }
+
+      heroEl.addEventListener("pointerenter", () => {
+        followState.pointerInsideViz = true;
+      });
+
+      heroEl.addEventListener("pointerleave", (event) => {
+        syncPointerProximity(event.clientX, event.clientY);
+        updateFollowTarget();
+      });
+
+      function handlePointerTracking(event) {
         followState.pointerX = event.clientX;
         followState.pointerY = event.clientY;
+        syncPointerProximity(event.clientX, event.clientY);
         updateFollowTarget();
-      }, { passive: true });
+      }
+
+      window.addEventListener("pointermove", handlePointerTracking, { passive: true });
+      window.addEventListener("mousemove", handlePointerTracking, { passive: true });
 
       function updateFollowState() {
         const shouldFollow = window.innerWidth > 840 && window.scrollY > Math.max(heroEl.offsetHeight - 100, 140);
