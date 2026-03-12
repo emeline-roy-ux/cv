@@ -5,11 +5,12 @@
       "type": "root",
       "label": "CV — territoire de recherche",
       "yearStart": 2015,
-      "yearEnd": 2026,
+      "yearEnd": 2027,
       "keywords": [
-        "design",
+        "didactique du design",
         "sciences de l’éducation",
-        "numérique"
+        "CNU 70 & CNU 18",
+        "innovation pédagogique"
       ],
       "evidence": null
     },
@@ -23,12 +24,6 @@
       "id": "recherche",
       "type": "branch",
       "label": "Recherche",
-      "parent": "cv"
-    },
-    {
-      "id": "enseignement",
-      "type": "branch",
-      "label": "Enseignements",
       "parent": "cv"
     },
     {
@@ -58,14 +53,14 @@
     {
       "id": "mcf",
       "type": "leaf",
-      "label": "MCF — AMU / INSPÉ (70e) — qualifiée 18e",
+      "label": "Maîtresse de conférences (sciences de l’éducation) — AMU INSPÉ",
       "parent": "statut",
       "yearStart": 2024,
-      "yearEnd": 2026,
+      "yearEnd": 2027,
       "keywords": [
         "MCF",
-        "70e",
-        "18e"
+        "didactique du design",
+        "AMU"
       ],
       "evidence": "https://adef.univ-amu.fr/fr/annuaire/roy-emeline"
     },
@@ -110,52 +105,28 @@
       "parent": "recherche",
       "bibliography": [
         {
-          "text": "Récapitulatif des productions et des activités scientifiques"
+          "text": "ACL revues à comité de lecture : 18 (+5 en reviewing)"
         },
         {
-          "text": "Publications"
+          "text": "COS/ch — chapitres d’ouvrages scientifiques : 11"
         },
         {
-          "text": "Publiés ou acceptés"
+          "text": "C-ACTI — communications avec actes : 2"
         },
         {
-          "text": "ACL - Articles dans des revues internationales ou nationales à comité de lecture"
+          "text": "C-COM — communications orales sans actes : 18"
         },
         {
-          "text": "CNU 70 : 15"
+          "text": "Autres communications (séminaires) : 11"
         },
         {
-          "text": "CNU 18 : 3"
+          "text": "Programmes de recherche / appels à projet : 4"
         },
         {
-          "text": "ACTI - Actes de colloques internationaux : 2"
+          "text": "Co-organisations de colloques et journées : 12"
         },
         {
-          "text": "COS/ch - Chapitres d’ouvrages scientifiques : 4"
-        },
-        {
-          "text": "Communications scientifiques"
-        },
-        {
-          "text": "C-ACTI - Communications avec actes dans un colloque international : 2"
-        },
-        {
-          "text": "C-COM - Communications orales sans actes lors de colloques ou journées d’études : 15"
-        },
-        {
-          "text": "Autres communications : séminaires : 10"
-        },
-        {
-          "text": "Autres activités scientifiques"
-        },
-        {
-          "text": "Implication dans des programmes de recherche ou appels à projet : 4"
-        },
-        {
-          "text": "Coorganisations de colloques internationaux et de journées d’études : 5"
-        },
-        {
-          "text": "Codirection d’ouvrage scientifique : 3"
+          "text": "Codirections d’ouvrage scientifique : 4 (+1 en cours)"
         }
       ],
       "summary": "Production scientifique, publications et communications recensées à partir de l’arborescence du CV."
@@ -370,7 +341,7 @@
       "type": "branch",
       "label": "Responsabilités institutionnelles",
       "parent": "cv",
-      "summary": "Fonctions institutionnelles et responsabilités académiques liées aux missions d’enseignement et de recherche."
+      "summary": "Responsabilités administratives, coordination de formations et animation scientifique (GIS Arts & Éducation, DSAA, MEEF)."
     },
     {
       "id": "resp_statut",
@@ -613,6 +584,220 @@
         "méthodologies",
         "normes rédactionnelles"
       ]
+    },
+    {
+      "id": "contact",
+      "type": "leaf",
+      "label": "Contact professionnel",
+      "parent": "profil",
+      "keywords": [
+        "emeline.roy@univ-amu.fr",
+        "Bouillargues"
+      ],
+      "evidence": "mailto:emeline.roy@univ-amu.fr"
+    },
+    {
+      "id": "situation_actuelle",
+      "type": "leaf",
+      "label": "Situation actuelle : MCF en didactique du design et des arts appliqués",
+      "parent": "statut",
+      "yearStart": 2024,
+      "keywords": [
+        "master MEEF",
+        "master DSAA",
+        "BTS"
+      ],
+      "summary": "Depuis septembre 2024 : Maîtresse de conférences en sciences de l’éducation à Aix-Marseille Université (INSPÉ de Marseille)."
+    },
+    {
+      "id": "cnu_qualif",
+      "type": "leaf",
+      "label": "Qualifications CNU 70e (2023) et 18e (2024)",
+      "parent": "formation",
+      "yearStart": 2023,
+      "yearEnd": 2024,
+      "keywords": [
+        "qualification MCF",
+        "CNU 70",
+        "CNU 18"
+      ]
+    },
+    {
+      "id": "doctorat",
+      "type": "leaf",
+      "label": "Doctorat en sciences de l’éducation — AMU",
+      "parent": "formation",
+      "yearStart": 2018,
+      "yearEnd": 2022,
+      "evidence": "https://theses.fr/2022AIXM0071"
+    },
+    {
+      "id": "master_recherche",
+      "type": "leaf",
+      "label": "Master recherche en sciences de l’éducation — AMU",
+      "parent": "formation",
+      "yearStart": 2017,
+      "yearEnd": 2018
+    },
+    {
+      "id": "exp_sup",
+      "type": "leaf",
+      "label": "Expériences pédagogiques dans le supérieur (AMU, UNîmes, ESDM)",
+      "parent": "experiences",
+      "yearStart": 2019,
+      "yearEnd": 2027,
+      "keywords": [
+        "ATER",
+        "MCF",
+        "chargée de cours"
+      ]
+    },
+    {
+      "id": "exp_second_degre",
+      "type": "leaf",
+      "label": "Voie professionnelle : lycée pro, GRETA, CMA, Compagnons du devoir",
+      "parent": "experiences",
+      "yearStart": 2015,
+      "yearEnd": 2024,
+      "keywords": [
+        "arts appliqués",
+        "stylisme",
+        "chef-d’œuvre"
+      ]
+    },
+    {
+      "id": "exp_design",
+      "type": "leaf",
+      "label": "Expériences en design : communication visuelle, édition numérique",
+      "parent": "experiences",
+      "yearStart": 2007,
+      "yearEnd": 2027,
+      "keywords": [
+        "Vogica",
+        "La Noisette",
+        "GIS Arts & Éducation"
+      ]
+    },
+    {
+      "id": "formation_recherche",
+      "type": "branch",
+      "label": "Formation à la recherche",
+      "parent": "recherche"
+    },
+    {
+      "id": "positionnement_scientifique",
+      "type": "branch",
+      "label": "Positionnement scientifique",
+      "parent": "recherche"
+    },
+    {
+      "id": "projets_recherche",
+      "type": "branch",
+      "label": "Projets de recherche en cours",
+      "parent": "recherche"
+    },
+    {
+      "id": "master_recherche_memoire",
+      "type": "leaf",
+      "label": "Mémoire de master : activité de création-conception en arts appliqués",
+      "parent": "formation_recherche",
+      "year": 2018
+    },
+    {
+      "id": "these_2022",
+      "type": "leaf",
+      "label": "Thèse (2022) : L’activité de création-conception dans l’enseignement des arts appliqués",
+      "parent": "formation_recherche",
+      "evidence": "https://theses.fr/2022AIXM0071"
+    },
+    {
+      "id": "axe1",
+      "type": "leaf",
+      "label": "Axe 1 — Didactique de l’activité de création-conception",
+      "parent": "positionnement_scientifique"
+    },
+    {
+      "id": "axe2",
+      "type": "leaf",
+      "label": "Axe 2 — Médiations, dispositifs et cultures numériques en formation design",
+      "parent": "positionnement_scientifique"
+    },
+    {
+      "id": "axe3",
+      "type": "leaf",
+      "label": "Axe 3 — Vulnérabilités éducatives, inclusion et design social",
+      "parent": "positionnement_scientifique"
+    },
+    {
+      "id": "axe4",
+      "type": "leaf",
+      "label": "Axe 4 — Prescriptions institutionnelles et matrice disciplinaire du design",
+      "parent": "positionnement_scientifique"
+    },
+    {
+      "id": "arcane",
+      "type": "leaf",
+      "label": "Projet ARCANE — anxiété et activité de création-conception",
+      "parent": "projets_recherche"
+    },
+    {
+      "id": "ampiric_corps",
+      "type": "leaf",
+      "label": "Programme AMPIRIC CORPS — corps, émotions et apprentissages",
+      "parent": "projets_recherche"
+    },
+    {
+      "id": "lypcap",
+      "type": "leaf",
+      "label": "Projet LyP&CAP / CAPTURE — réengagement en CAP",
+      "parent": "projets_recherche"
+    },
+    {
+      "id": "dt_typology",
+      "type": "leaf",
+      "label": "International D&T Curriculum Typology Project",
+      "parent": "projets_recherche"
+    },
+    {
+      "id": "diagram",
+      "type": "leaf",
+      "label": "Projet DIAGRAM — activité de conception en examen",
+      "parent": "projets_recherche"
+    },
+    {
+      "id": "extra_cap",
+      "type": "leaf",
+      "label": "Projet EXTRA-CAP — exergaming et apprentissage des mathématiques",
+      "parent": "projets_recherche"
+    },
+    {
+      "id": "resp_gis",
+      "type": "leaf",
+      "label": "Directrice adjointe du GIS Arts & Éducation (depuis 2025)",
+      "parent": "responsabilites_institutionnelles",
+      "yearStart": 2025
+    },
+    {
+      "id": "resp_dsaa",
+      "type": "leaf",
+      "label": "Coordinatrice AMU du Master-DSAA (depuis 2025)",
+      "parent": "responsabilites_institutionnelles",
+      "yearStart": 2025
+    },
+    {
+      "id": "resp_lycee_pro",
+      "type": "leaf",
+      "label": "Coresponsable du parcours « Enseigner au lycée professionnel » (2024–2026)",
+      "parent": "responsabilites_institutionnelles",
+      "yearStart": 2024,
+      "yearEnd": 2026
+    },
+    {
+      "id": "resp_tutorat",
+      "type": "leaf",
+      "label": "Responsable du tutorat MEEF Design & métiers d’art (depuis 2022)",
+      "parent": "responsabilites_institutionnelles",
+      "yearStart": 2022
     }
   ]
 }

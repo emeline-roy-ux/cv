@@ -139,6 +139,17 @@
       font-family: "IBM Plex Mono", monospace;
     }
 
+    .contact {
+      margin-top: .9rem;
+      font-family: "IBM Plex Mono", monospace;
+      font-size: .8rem;
+      color: #2f2f2f;
+      display: grid;
+      gap: .2rem;
+    }
+
+    .contact a { color: #3f35d5; }
+
     .grid {
       margin-top: 1.1rem;
       display: grid;
@@ -231,6 +242,7 @@
         <a href="#profil">Profil</a>
         <a href="#recherche">Recherche</a>
         <a href="#enseignements">Enseignements</a>
+        <a href="#responsabilites">Responsabilités</a>
         <a href="#publications">Publications</a>
       </nav>
     </header>
@@ -239,9 +251,14 @@
       <article class="card intro">
         <h1>Portfolio<br />académique <em>vivant</em></h1>
         <p>
-          MCF à l’INSPÉ d’Aix-Marseille Université, je développe des travaux sur la didactique du design,
-          les pratiques de conception et les pédagogies transformatives.
+          Émeline Roy — enseignante-chercheuse en sciences de l’éducation (CNU 70) et en design
+          (CNU 18), Maîtresse de conférences à l’INSPÉ d’Aix-Marseille Université.
         </p>
+        <div class="contact">
+          <span>Membre permanent UR 4671 ADEF · Membre associée UPR PROJEKT</span>
+          <span>Directrice adjointe du GIS Arts & Éducation</span>
+          <a href="mailto:emeline.roy@univ-amu.fr">emeline.roy@univ-amu.fr</a>
+        </div>
         <div id="root-tags" class="tags"></div>
       </article>
       <article class="card portrait">
@@ -265,6 +282,12 @@
       <h2>Enseignements</h2>
       <p class="section-sub">Cours, publics et formats pédagogiques.</p>
       <div class="grid" id="enseignements-grid"></div>
+    </section>
+
+    <section id="responsabilites" class="card">
+      <h2>Responsabilités institutionnelles</h2>
+      <p class="section-sub">Coordination, pilotage de formations et animation scientifique.</p>
+      <div class="grid" id="responsabilites-grid"></div>
     </section>
 
     <section id="publications" class="card">
@@ -360,7 +383,8 @@
 
       renderBranch("profil", "profil-grid", nodes);
       renderBranch("recherche", "recherche-grid", nodes);
-      renderBranch("enseignement", "enseignements-grid", nodes);
+      renderBranch("enseignements", "enseignements-grid", nodes);
+      renderBranch("responsabilites_institutionnelles", "responsabilites-grid", nodes);
       renderPublications(nodes);
     }
 
