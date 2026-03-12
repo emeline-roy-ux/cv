@@ -11,11 +11,12 @@
     :root {
       --bg: #f4f6f8;
       --paper: #ffffff;
-      --ink: #132033;
-      --muted: #546173;
-      --line: #d6dde6;
-      --accent: #254f8a;
-      --max: 1080px;
+      --ink: #0e1f35;
+      --muted: #4f6177;
+      --line: #d3dbe6;
+      --accent: #204a88;
+      --accent-soft: #eaf0f9;
+      --max: 1100px;
       --radius: 14px;
     }
 
@@ -28,12 +29,7 @@
       font-family: "Inter", system-ui, sans-serif;
       line-height: 1.45;
     }
-
-    .container {
-      max-width: var(--max);
-      margin: 0 auto;
-      padding: 1rem 1rem 3rem;
-    }
+    .container { max-width: var(--max); margin: 0 auto; padding: 1rem 1rem 3rem; }
 
     .topbar {
       position: sticky;
@@ -44,24 +40,14 @@
       align-items: center;
       justify-content: space-between;
       gap: 1rem;
-      padding: .75rem 1rem;
+      padding: .72rem 1rem;
       border: 1px solid var(--line);
       border-radius: 999px;
-      background: rgba(255,255,255,.9);
+      background: rgba(255,255,255,.93);
       backdrop-filter: blur(4px);
     }
-
-    .brand {
-      font-family: "Source Serif 4", serif;
-      font-size: 1.1rem;
-      letter-spacing: .01em;
-    }
-
-    .brand span {
-      color: var(--accent);
-      font-weight: 700;
-    }
-
+    .brand { font-family: "Source Serif 4", serif; font-size: 1.1rem; }
+    .brand span { color: var(--accent); font-weight: 700; }
     .menu { display: flex; flex-wrap: wrap; gap: .45rem; }
     .menu a {
       text-decoration: none;
@@ -71,16 +57,14 @@
       border-radius: 8px;
       border: 1px solid transparent;
     }
-    .menu a:hover {
-      color: var(--ink);
-      border-color: var(--line);
-      background: #fff;
-    }
+    .menu a:hover { color: var(--ink); border-color: var(--line); background: #fff; }
 
-    .hero {
+    .home {
+      min-height: 84vh;
       display: grid;
-      grid-template-columns: 1.25fr .75fr;
+      grid-template-columns: 1.2fr .8fr;
       gap: 1rem;
+      align-items: stretch;
       margin-bottom: 1rem;
     }
 
@@ -90,49 +74,34 @@
       background: var(--paper);
       padding: 1.1rem;
     }
-
+    .intro {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background: linear-gradient(165deg, #ffffff 0%, #f7faff 100%);
+    }
+    .home-kicker { font-family: "IBM Plex Mono", monospace; color: var(--muted); font-size: .86rem; }
     .intro h1 {
-      margin: 0;
+      margin: .3rem 0 0;
       font-family: "Source Serif 4", serif;
-      font-size: clamp(2rem, 5vw, 3.1rem);
-      line-height: 1.03;
-      font-weight: 600;
+      font-size: clamp(2.2rem, 6vw, 4.2rem);
+      line-height: 1.02;
+      letter-spacing: -.01em;
     }
-
     .typed-line {
-      margin-top: .65rem;
-      font-family: "IBM Plex Mono", monospace;
-      font-size: .95rem;
-      color: var(--accent);
-      min-height: 1.5rem;
-    }
-
-    .typed-cursor {
-      display: inline-block;
-      animation: blink .9s steps(1) infinite;
-      margin-left: 2px;
-    }
-
-    @keyframes blink {
-      50% { opacity: 0; }
-    }
-
-    .intro p {
       margin-top: .8rem;
-      max-width: 62ch;
-      color: var(--muted);
-    }
-
-    .contact {
-      margin-top: .85rem;
-      display: grid;
-      gap: .2rem;
       font-family: "IBM Plex Mono", monospace;
-      font-size: .78rem;
-      color: #3f4f64;
+      font-size: clamp(1.35rem, 5vw, 2.65rem);
+      color: var(--accent);
+      min-height: 1.7em;
+      font-weight: 500;
     }
-    .contact a { color: var(--accent); }
+    .typed-cursor { display: inline-block; animation: blink .9s steps(1) infinite; margin-left: 3px; }
+    @keyframes blink { 50% { opacity: 0; } }
 
+    .intro p { margin-top: .9rem; max-width: 64ch; color: var(--muted); }
+    .contact { margin-top: .9rem; display: grid; gap: .2rem; font-family: "IBM Plex Mono", monospace; font-size: .77rem; color: #3f4f64; }
+    .contact a { color: var(--accent); }
     .tags { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: .8rem; }
     .tag {
       border: 1px solid var(--line);
@@ -147,12 +116,11 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      background: linear-gradient(180deg, #fbfdff 0%, #f2f6fa 100%);
+      background: linear-gradient(180deg, #fbfdff 0%, #f1f5fb 100%);
     }
-
     .portrait img {
       width: 100%;
-      max-width: 360px;
+      max-width: 340px;
       aspect-ratio: 4 / 5;
       object-fit: cover;
       border-radius: 12px;
@@ -160,81 +128,70 @@
     }
 
     section.card { margin-top: 1rem; }
-    section h2 {
-      margin: 0;
-      font-family: "Source Serif 4", serif;
-      font-size: clamp(1.28rem, 2.1vw, 1.9rem);
-      font-weight: 600;
-    }
+    section h2 { margin: 0; font-family: "Source Serif 4", serif; font-size: clamp(1.3rem, 2.2vw, 2rem); }
+    .section-sub { margin: .3rem 0 .95rem; color: var(--muted); font-size: .92rem; }
 
-    .section-sub {
-      margin: .3rem 0 .95rem;
-      color: var(--muted);
-      font-size: .9rem;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap: .8rem;
-    }
-
-    .block {
-      grid-column: span 6;
+    .accordion-stack { display: grid; gap: .7rem; }
+    .accordion {
       border: 1px solid var(--line);
       border-radius: 12px;
-      padding: .82rem;
       background: #fcfdff;
+      overflow: hidden;
     }
-
-    .block h3 {
-      margin: 0 0 .45rem;
-      font-size: .98rem;
-      color: #1c2d43;
+    .accordion summary {
+      list-style: none;
+      cursor: pointer;
+      padding: .8rem .9rem;
+      font-weight: 600;
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      align-items: center;
     }
-
-    .item {
-      border-top: 1px dashed #d4dce6;
-      padding: .5rem 0;
-    }
-    .item:first-of-type { border-top: 0; padding-top: 0; }
-    .item p { margin: 0; }
-    .item small {
-      display: block;
-      margin-top: .15rem;
-      color: var(--muted);
+    .accordion summary::-webkit-details-marker { display: none; }
+    .count {
       font-family: "IBM Plex Mono", monospace;
-      font-size: .74rem;
+      font-size: .73rem;
+      color: var(--muted);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: .12rem .5rem;
+      background: #fff;
+      white-space: nowrap;
     }
-
-    .item a, .pub a { color: var(--accent); }
-
-    .pub-list {
+    .accordion .content {
+      border-top: 1px dashed var(--line);
+      padding: .8rem .9rem;
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: .75rem;
+      gap: .7rem;
     }
-
-    .pub {
+    .item {
       border: 1px solid var(--line);
       border-radius: 10px;
-      padding: .7rem;
-      background: #fbfdff;
-      font-size: .92rem;
+      background: #fff;
+      padding: .65rem;
+      font-size: .93rem;
     }
+    .item p { margin: 0; }
+    .item small { display: block; margin-top: .2rem; color: var(--muted); }
+    .item a { color: var(--accent); }
+    .subitem { border-top: 1px dashed var(--line); margin-top: .6rem; padding-top: .6rem; }
 
-    footer {
-      margin-top: 1.4rem;
-      color: #607186;
-      font-size: .78rem;
-      font-family: "IBM Plex Mono", monospace;
+    .hal-box {
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: var(--accent-soft);
+      padding: .8rem;
+      margin-bottom: .8rem;
     }
+    .hal-box h3 { margin: 0 0 .5rem; font-size: 1rem; }
+    .hal-list { margin: 0; padding-left: 1rem; display: grid; gap: .35rem; }
+
+    footer { margin-top: 1.4rem; color: #607186; font-size: .78rem; font-family: "IBM Plex Mono", monospace; }
 
     @media (max-width: 920px) {
       .topbar { border-radius: 16px; }
-      .hero { grid-template-columns: 1fr; }
-      .block { grid-column: span 12; }
-      .pub-list { grid-template-columns: 1fr; }
+      .home { grid-template-columns: 1fr; min-height: auto; }
     }
   </style>
 </head>
@@ -243,7 +200,7 @@
     <header class="topbar">
       <div class="brand">Emeline <span>Roy</span></div>
       <nav class="menu">
-        <a href="#a-propos">À propos</a>
+        <a href="#home">Home</a>
         <a href="#profil">Profil</a>
         <a href="#recherche">Recherche</a>
         <a href="#enseignements">Enseignements</a>
@@ -252,13 +209,14 @@
       </nav>
     </header>
 
-    <section id="a-propos" class="hero">
+    <section id="home" class="home">
       <article class="card intro">
-        <h1>Portfolio académique</h1>
+        <span class="home-kicker">Portfolio académique · Sciences de l'éducation & Design</span>
+        <h1>Émeline Roy</h1>
         <div class="typed-line">I'm <span id="typed-role"></span><span class="typed-cursor">|</span></div>
         <p>
-          Émeline Roy — enseignante-chercheuse en sciences de l’éducation (CNU 70) et en design
-          (CNU 18), Maîtresse de conférences à l’INSPÉ d’Aix-Marseille Université.
+          Enseignante-chercheuse (CNU 70 & CNU 18), Maîtresse de conférences à l’INSPÉ d’Aix-Marseille Université,
+          avec une pratique du design pensée comme levier pédagogique, scientifique et institutionnel.
         </p>
         <div class="contact">
           <span>Membre permanent UR 4671 ADEF · Membre associée UPR PROJEKT</span>
@@ -275,35 +233,36 @@
     <section id="profil" class="card">
       <h2>Profil</h2>
       <p class="section-sub">Parcours, statut, laboratoires et expériences professionnelles.</p>
-      <div class="grid" id="profil-grid"></div>
+      <div id="profil-list" class="accordion-stack"></div>
     </section>
 
     <section id="recherche" class="card">
       <h2>Recherche</h2>
       <p class="section-sub">Axes de recherche, vie scientifique et activités collectives.</p>
-      <div class="grid" id="recherche-grid"></div>
+      <div id="recherche-list" class="accordion-stack"></div>
     </section>
 
     <section id="enseignements" class="card">
       <h2>Enseignements</h2>
-      <p class="section-sub">Cours, publics et formats pédagogiques.</p>
-      <div class="grid" id="enseignements-grid"></div>
+      <p class="section-sub">Sections déroulantes par thème et par cours.</p>
+      <div id="enseignements-list" class="accordion-stack"></div>
     </section>
 
     <section id="responsabilites" class="card">
       <h2>Responsabilités institutionnelles</h2>
       <p class="section-sub">Coordination, pilotage de formations et animation scientifique.</p>
-      <div class="grid" id="responsabilites-grid"></div>
+      <div id="responsabilites-list" class="accordion-stack"></div>
     </section>
 
     <section id="publications" class="card">
-      <h2>Dernières publications</h2>
-      <p class="section-sub">Sélection automatique depuis l’arborescence du CV.</p>
-      <div id="publication-list" class="pub-list"></div>
+      <h2>Publications</h2>
+      <p class="section-sub">Toutes les catégories sont affichées en menus déroulants.</p>
+      <div id="hal-latest"></div>
+      <div id="publications-list" class="accordion-stack"></div>
     </section>
 
     <footer>
-      Site refondu au format académique · Données alimentées par <code>data.json</code>.
+      Site statique · Données: <code>data.json</code> + synchronisation HAL via <code>hal-publications.json</code>.
     </footer>
   </div>
 
@@ -317,97 +276,168 @@
       let roleIndex = 0;
       let charIndex = 0;
       let deleting = false;
-
       function tick() {
         const current = roles[roleIndex];
-        if (deleting) {
-          charIndex -= 1;
-        } else {
-          charIndex += 1;
-        }
-
+        charIndex += deleting ? -1 : 1;
         target.textContent = current.slice(0, charIndex);
-
         if (!deleting && charIndex === current.length) {
           deleting = true;
           setTimeout(tick, 1100);
           return;
         }
-
         if (deleting && charIndex === 0) {
           deleting = false;
           roleIndex = (roleIndex + 1) % roles.length;
         }
-
         setTimeout(tick, deleting ? 55 : 95);
       }
-
       tick();
     }
 
-    function nodeText(node) {
-      const years = [node.yearStart, node.yearEnd].filter(Boolean);
-      const yearPart = years.length ? ` (${years.join("–")})` : "";
-      return `${node.label || "Entrée"}${yearPart}`;
+    function createTags(keywords = []) {
+      const frag = document.createDocumentFragment();
+      (keywords || []).forEach((k) => {
+        const tag = document.createElement("span");
+        tag.className = "tag";
+        tag.textContent = k;
+        frag.appendChild(tag);
+      });
+      return frag;
     }
 
-    function createItem(node) {
-      const wrap = document.createElement("article");
-      wrap.className = "item";
-      const p = document.createElement("p");
-      p.textContent = nodeText(node);
-      wrap.appendChild(p);
-      const meta = [];
-      if (Array.isArray(node.keywords) && node.keywords.length) meta.push(node.keywords.join(" · "));
-      if (node.evidence) {
-        const link = document.createElement("a");
-        link.href = node.evidence;
-        link.target = "_blank";
-        link.rel = "noreferrer";
-        link.textContent = "Voir la source";
+    function createLeafItem(node) {
+      const article = document.createElement("article");
+      article.className = "item";
+      const title = document.createElement("p");
+      title.textContent = node.label || "Entrée";
+      article.appendChild(title);
+      if (node.summary) {
         const small = document.createElement("small");
-        small.appendChild(link);
-        wrap.appendChild(small);
+        small.textContent = node.summary;
+        article.appendChild(small);
       }
-      if (meta.length) {
-        const small = document.createElement("small");
-        small.textContent = meta.join(" — ");
-        wrap.appendChild(small);
+      if (Array.isArray(node.keywords) && node.keywords.length) {
+        const tags = document.createElement("div");
+        tags.className = "tags";
+        tags.appendChild(createTags(node.keywords));
+        article.appendChild(tags);
       }
-      return wrap;
+      return article;
     }
 
-    function renderBranch(rootId, targetId, nodes) {
-      const container = byId(targetId);
-      const rootChildren = nodes.filter((n) => n.parent === rootId && n.type === "branch");
-      rootChildren.forEach((branch) => {
-        const block = document.createElement("section");
-        block.className = "block";
-        const title = document.createElement("h3");
-        title.textContent = branch.label;
-        block.appendChild(title);
-        const descendants = nodes.filter((n) => n.parent === branch.id);
-        descendants.forEach((item) => block.appendChild(createItem(item)));
-        container.appendChild(block);
+    function createAccordion(title, countText, openByDefault = false) {
+      const details = document.createElement("details");
+      details.className = "accordion";
+      if (openByDefault) details.open = true;
+      const summary = document.createElement("summary");
+      summary.textContent = title;
+      const count = document.createElement("span");
+      count.className = "count";
+      count.textContent = countText;
+      summary.appendChild(count);
+      details.appendChild(summary);
+      const content = document.createElement("div");
+      content.className = "content";
+      details.appendChild(content);
+      return { details, content };
+    }
+
+    function renderSimpleBranches(rootId, targetId, nodes) {
+      const target = byId(targetId);
+      const branches = nodes.filter((n) => n.parent === rootId && n.type === "branch");
+      branches.forEach((branch, idx) => {
+        const leaves = nodes.filter((n) => n.parent === branch.id);
+        const { details, content } = createAccordion(branch.label, `${leaves.length} entrées`, idx === 0);
+        if (branch.summary) {
+          const p = document.createElement("p");
+          p.className = "item";
+          p.textContent = branch.summary;
+          content.appendChild(p);
+        }
+        leaves.forEach((leaf) => content.appendChild(createLeafItem(leaf)));
+        target.appendChild(details);
+      });
+    }
+
+    function renderEnseignements(nodes) {
+      const target = byId("enseignements-list");
+      const entries = nodes.filter((n) => n.parent === "enseignements");
+      entries.forEach((entry, idx) => {
+        const children = nodes.filter((n) => n.parent === entry.id);
+        const count = children.length ? `${children.length} sous-entrées` : "1 cours";
+        const { details, content } = createAccordion(entry.label, count, idx === 0);
+        if (entry.summary) {
+          const summaryBox = document.createElement("article");
+          summaryBox.className = "item";
+          summaryBox.textContent = entry.summary;
+          content.appendChild(summaryBox);
+        }
+        if (Array.isArray(entry.keywords) && entry.keywords.length) {
+          const tags = document.createElement("div");
+          tags.className = "tags";
+          tags.appendChild(createTags(entry.keywords));
+          content.appendChild(tags);
+        }
+        children.forEach((child) => {
+          const box = createLeafItem(child);
+          box.classList.add("subitem");
+          content.appendChild(box);
+        });
+        target.appendChild(details);
       });
     }
 
     function renderPublications(nodes) {
-      const publicationRoot = nodes.find((n) => n.id === "publications");
-      const target = byId("publication-list");
-      if (!publicationRoot) return;
-      const branches = nodes.filter((n) => n.parent === publicationRoot.id);
-      const selected = branches.flatMap((b) => (Array.isArray(b.bibliography) ? b.bibliography : [])).slice(0, 12);
-      selected.forEach((entry) => {
-        const div = document.createElement("article");
-        div.className = "pub";
-        if (entry.url) {
-          div.innerHTML = `${entry.text} <a href="${entry.url}" target="_blank" rel="noreferrer">↗</a>`;
-        } else {
-          div.textContent = entry.text;
-        }
-        target.appendChild(div);
+      const target = byId("publications-list");
+      const branches = nodes.filter((n) => n.parent === "publications");
+      branches.forEach((branch, idx) => {
+        const refs = Array.isArray(branch.bibliography) ? branch.bibliography : [];
+        const { details, content } = createAccordion(branch.label, `${refs.length} références`, idx === 0);
+        refs.forEach((ref) => {
+          const line = document.createElement("article");
+          line.className = "item";
+          if (ref.url) {
+            line.innerHTML = `${ref.text} <a href="${ref.url}" target="_blank" rel="noreferrer">↗</a>`;
+          } else {
+            line.textContent = ref.text;
+          }
+          content.appendChild(line);
+        });
+        target.appendChild(details);
       });
+    }
+
+    function renderHalLatest(items) {
+      if (!Array.isArray(items) || !items.length) return;
+      const target = byId("hal-latest");
+      const box = document.createElement("section");
+      box.className = "hal-box";
+      const title = document.createElement("h3");
+      title.textContent = "Dernières publications HAL (mise à jour via script)";
+      box.appendChild(title);
+      const list = document.createElement("ul");
+      list.className = "hal-list";
+      items.slice(0, 6).forEach((item) => {
+        const li = document.createElement("li");
+        const text = `${item.year || "s.d."} — ${item.title}`;
+        if (item.url) {
+          li.innerHTML = `<a href="${item.url}" target="_blank" rel="noreferrer">${text}</a>`;
+        } else {
+          li.textContent = text;
+        }
+        list.appendChild(li);
+      });
+      box.appendChild(list);
+      target.appendChild(box);
+    }
+
+    async function bootPortrait() {
+      const img = byId("portrait-photo");
+      if (!img) return;
+      try {
+        const encoded = await fetch("assets/visuels/emeline-roy.base64.txt").then((r) => r.text());
+        if (encoded?.trim()) img.src = `data:image/png;base64,${encoded.trim()}`;
+      } catch (_) {}
     }
 
 
@@ -426,8 +456,8 @@
     async function boot() {
       const data = await fetch("data.json").then((r) => r.json());
       const nodes = Array.isArray(data.nodes) ? data.nodes : [];
-      const cv = nodes.find((n) => n.id === "cv");
       const rootTags = byId("root-tags");
+      const cv = nodes.find((n) => n.id === "cv");
       (cv?.keywords || []).forEach((k) => {
         const tag = document.createElement("span");
         tag.className = "tag";
@@ -435,12 +465,17 @@
         rootTags.appendChild(tag);
       });
 
+      const halPublications = await fetch("hal-publications.json")
+        .then((res) => (res.ok ? res.json() : []))
+        .catch(() => []);
+
       bootTypewriter();
       await bootPortrait();
-      renderBranch("profil", "profil-grid", nodes);
-      renderBranch("recherche", "recherche-grid", nodes);
-      renderBranch("enseignements", "enseignements-grid", nodes);
-      renderBranch("responsabilites_institutionnelles", "responsabilites-grid", nodes);
+      renderSimpleBranches("profil", "profil-list", nodes);
+      renderSimpleBranches("recherche", "recherche-list", nodes);
+      renderEnseignements(nodes);
+      renderSimpleBranches("responsabilites_institutionnelles", "responsabilites-list", nodes);
+      renderHalLatest(halPublications);
       renderPublications(nodes);
     }
 
