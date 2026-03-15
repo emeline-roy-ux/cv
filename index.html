@@ -29,7 +29,78 @@
       font-family: "Inter", system-ui, sans-serif;
       line-height: 1.45;
     }
+
+    .landing {
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 1rem;
+    }
+    .landing-card {
+      width: min(860px, 100%);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: var(--paper);
+      padding: clamp(1.2rem, 3vw, 2rem);
+    }
+    .home-kicker { font-family: "IBM Plex Mono", monospace; color: var(--muted); font-size: .85rem; }
+    .landing h1 {
+      margin: .35rem 0 0;
+      font-family: "Source Serif 4", serif;
+      font-size: clamp(2.4rem, 8vw, 4.8rem);
+      line-height: 1;
+    }
+    .typed-line {
+      margin-top: .8rem;
+      font-family: "IBM Plex Mono", monospace;
+      font-size: clamp(1.2rem, 4.2vw, 2.2rem);
+      color: var(--accent);
+      min-height: 1.65em;
+      font-weight: 500;
+    }
+    .typed-cursor { display: inline-block; animation: blink .9s steps(1) infinite; margin-left: 3px; }
+    @keyframes blink { 50% { opacity: 0; } }
+
+    .landing-cats {
+      margin-top: 1rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: .5rem;
+    }
+    .landing-cats a,
+    .tag {
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: .25rem .65rem;
+      font-size: .8rem;
+      text-decoration: none;
+      color: #33475f;
+      background: #fbfcfd;
+    }
+
+    .socials {
+      margin-top: 1rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: .55rem;
+      font-family: "IBM Plex Mono", monospace;
+      font-size: .82rem;
+    }
+    .socials a { color: var(--accent); }
+
+    .enter-btn {
+      margin-top: 1.2rem;
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--ink);
+      padding: .65rem .9rem;
+      border-radius: 10px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
     .container { max-width: var(--max); margin: 0 auto; padding: 1rem 1rem 3rem; }
+    .hidden { display: none; }
 
     .topbar {
       position: sticky;
@@ -59,72 +130,11 @@
     }
     .menu a:hover { color: var(--ink); border-color: var(--line); background: #fff; }
 
-    .home {
-      min-height: 84vh;
-      display: grid;
-      grid-template-columns: 1.2fr .8fr;
-      gap: 1rem;
-      align-items: stretch;
-      margin-bottom: 1rem;
-    }
-
     .card {
       border: 1px solid var(--line);
       border-radius: var(--radius);
       background: var(--paper);
       padding: 1.1rem;
-    }
-    .intro {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      background: linear-gradient(165deg, #ffffff 0%, #f7faff 100%);
-    }
-    .home-kicker { font-family: "IBM Plex Mono", monospace; color: var(--muted); font-size: .86rem; }
-    .intro h1 {
-      margin: .3rem 0 0;
-      font-family: "Source Serif 4", serif;
-      font-size: clamp(2.2rem, 6vw, 4.2rem);
-      line-height: 1.02;
-      letter-spacing: -.01em;
-    }
-    .typed-line {
-      margin-top: .8rem;
-      font-family: "IBM Plex Mono", monospace;
-      font-size: clamp(1.35rem, 5vw, 2.65rem);
-      color: var(--accent);
-      min-height: 1.7em;
-      font-weight: 500;
-    }
-    .typed-cursor { display: inline-block; animation: blink .9s steps(1) infinite; margin-left: 3px; }
-    @keyframes blink { 50% { opacity: 0; } }
-
-    .intro p { margin-top: .9rem; max-width: 64ch; color: var(--muted); }
-    .contact { margin-top: .9rem; display: grid; gap: .2rem; font-family: "IBM Plex Mono", monospace; font-size: .77rem; color: #3f4f64; }
-    .contact a { color: var(--accent); }
-    .tags { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: .8rem; }
-    .tag {
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      padding: .2rem .58rem;
-      font-size: .74rem;
-      color: #33475f;
-      background: #fbfcfd;
-    }
-
-    .portrait {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: linear-gradient(180deg, #fbfdff 0%, #f1f5fb 100%);
-    }
-    .portrait img {
-      width: 100%;
-      max-width: 340px;
-      aspect-ratio: 4 / 5;
-      object-fit: cover;
-      border-radius: 12px;
-      border: 1px solid var(--line);
     }
 
     section.card { margin-top: 1rem; }
@@ -176,6 +186,7 @@
     .item small { display: block; margin-top: .2rem; color: var(--muted); }
     .item a { color: var(--accent); }
     .subitem { border-top: 1px dashed var(--line); margin-top: .6rem; padding-top: .6rem; }
+    .tags { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: .8rem; }
 
     .hal-box {
       border: 1px solid var(--line);
@@ -191,16 +202,39 @@
 
     @media (max-width: 920px) {
       .topbar { border-radius: 16px; }
-      .home { grid-template-columns: 1fr; min-height: auto; }
     }
   </style>
 </head>
 <body>
-  <div class="container">
+  <section id="landing" class="landing">
+    <article class="landing-card">
+      <span class="home-kicker">Portfolio académique · Sciences de l'éducation & Design</span>
+      <h1>Émeline Roy</h1>
+      <div class="typed-line">I'm <span id="typed-role"></span><span class="typed-cursor">|</span></div>
+
+      <div class="landing-cats">
+        <a href="#profil">Profil</a>
+        <a href="#recherche">Recherche</a>
+        <a href="#enseignements">Enseignements</a>
+        <a href="#responsabilites">Responsabilités</a>
+        <a href="#publications">Publications</a>
+      </div>
+
+      <div id="landing-tags" class="tags"></div>
+
+      <div class="socials">
+        <a href="https://www.linkedin.com/in/emeline-roy-141a7728" target="_blank" rel="noreferrer">LinkedIn</a>
+        <a href="https://github.com/emeline-roy" target="_blank" rel="noreferrer">GitHub</a>
+      </div>
+
+      <button id="open-site" class="enter-btn" type="button">Ouvrir la page complète</button>
+    </article>
+  </section>
+
+  <div id="main-site" class="container hidden">
     <header class="topbar">
       <div class="brand">Emeline <span>Roy</span></div>
       <nav class="menu">
-        <a href="#home">Home</a>
         <a href="#profil">Profil</a>
         <a href="#recherche">Recherche</a>
         <a href="#enseignements">Enseignements</a>
@@ -208,27 +242,6 @@
         <a href="#publications">Publications</a>
       </nav>
     </header>
-
-    <section id="home" class="home">
-      <article class="card intro">
-        <span class="home-kicker">Portfolio académique · Sciences de l'éducation & Design</span>
-        <h1>Émeline Roy</h1>
-        <div class="typed-line">I'm <span id="typed-role"></span><span class="typed-cursor">|</span></div>
-        <p>
-          Enseignante-chercheuse (CNU 70 & CNU 18), Maîtresse de conférences à l’INSPÉ d’Aix-Marseille Université,
-          avec une pratique du design pensée comme levier pédagogique, scientifique et institutionnel.
-        </p>
-        <div class="contact">
-          <span>Membre permanent UR 4671 ADEF · Membre associée UPR PROJEKT</span>
-          <span>Directrice adjointe du GIS Arts & Éducation</span>
-          <a href="mailto:emeline.roy@univ-amu.fr">emeline.roy@univ-amu.fr</a>
-        </div>
-        <div id="root-tags" class="tags"></div>
-      </article>
-      <article class="card portrait">
-        <img id="portrait-photo" src="assets/visuels/emeline-roy.png" alt="Portrait Emeline Roy" />
-      </article>
-    </section>
 
     <section id="profil" class="card">
       <h2>Profil</h2>
@@ -431,38 +444,28 @@
       target.appendChild(box);
     }
 
-    async function bootPortrait() {
-      const img = byId("portrait-photo");
-      if (!img) return;
-      try {
-        const encoded = await fetch("assets/visuels/emeline-roy.base64.txt").then((r) => r.text());
-        if (encoded?.trim()) img.src = `data:image/png;base64,${encoded.trim()}`;
-      } catch (_) {}
-    }
-
-
-
-    async function bootPortrait() {
-      const img = byId("portrait-photo");
-      if (!img) return;
-      try {
-        const encoded = await fetch("assets/visuels/emeline-roy.base64.txt").then((r) => r.text());
-        if (encoded?.trim()) img.src = `data:image/png;base64,${encoded.trim()}`;
-      } catch (_) {
-        // fallback conservé sur l'image locale par défaut
-      }
+    function setupLandingButton() {
+      const button = byId("open-site");
+      const landing = byId("landing");
+      const main = byId("main-site");
+      if (!button || !landing || !main) return;
+      button.addEventListener("click", () => {
+        main.classList.remove("hidden");
+        landing.classList.add("hidden");
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
     }
 
     async function boot() {
       const data = await fetch("data.json").then((r) => r.json());
       const nodes = Array.isArray(data.nodes) ? data.nodes : [];
-      const rootTags = byId("root-tags");
+      const landingTags = byId("landing-tags");
       const cv = nodes.find((n) => n.id === "cv");
       (cv?.keywords || []).forEach((k) => {
         const tag = document.createElement("span");
         tag.className = "tag";
         tag.textContent = k;
-        rootTags.appendChild(tag);
+        landingTags.appendChild(tag);
       });
 
       const halPublications = await fetch("hal-publications.json")
@@ -470,7 +473,7 @@
         .catch(() => []);
 
       bootTypewriter();
-      await bootPortrait();
+      setupLandingButton();
       renderSimpleBranches("profil", "profil-list", nodes);
       renderSimpleBranches("recherche", "recherche-list", nodes);
       renderEnseignements(nodes);
