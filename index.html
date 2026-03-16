@@ -64,6 +64,16 @@
       border: 1px solid transparent;
     }
     .menu a:hover { color: var(--ink); border-color: var(--line); background: #fff; }
+    .build-badge {
+      font-family: "IBM Plex Mono", monospace;
+      font-size: .7rem;
+      color: var(--muted);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: .12rem .5rem;
+      background: #fff;
+      white-space: nowrap;
+    }
 
     .card {
       border: 1px solid var(--line);
@@ -276,6 +286,7 @@
   <div id="main-site" class="container hidden">
     <header class="topbar">
       <div class="brand">Emeline <span>Roy</span></div>
+      <span id="build-badge" class="build-badge"></span>
       <nav class="menu">
         <a href="#profil">Profil</a>
         <a href="#recherche">Recherche</a>
@@ -363,6 +374,7 @@
 
   <script>
     const byId = (id) => document.getElementById(id);
+    const BUILD_VERSION = "2026-03-15-02";
 
     function bootTypewriter() {
       const roles = ["teacher", "researcher", "designer"];
@@ -528,9 +540,11 @@
 
     async function bootPortrait() {
       const img = byId("portrait-photo");
+      const badge = byId("build-badge");
+      if (badge) badge.textContent = `build ${BUILD_VERSION}`;
       if (!img) return;
       try {
-        const encoded = await fetch("assets/visuels/emeline-roy.base64.txt").then((r) => r.text());
+        const encoded = await fetch(`assets/visuels/emeline-roy.base64.txt?v=${BUILD_VERSION}`).then((r) => r.text());
         if (encoded?.trim()) img.src = `data:image/png;base64,${encoded.trim()}`;
       } catch (_) {
         // fallback conservé sur l'image locale par défaut
@@ -538,10 +552,10 @@
     }
 
     async function boot() {
-      const data = await fetch("data.json").then((r) => r.json());
+      const data = await fetch(`data.json?v=${BUILD_VERSION}`).then((r) => r.json());
       const nodes = Array.isArray(data.nodes) ? data.nodes : [];
 
-      const halPublications = await fetch("hal-publications.json")
+      const halPublications = await fetch(`hal-publications.json?v=${BUILD_VERSION}`)
         .then((res) => (res.ok ? res.json() : []))
         .catch(() => []);
 
